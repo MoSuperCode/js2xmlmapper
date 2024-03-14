@@ -10,17 +10,24 @@ function App() {
   const [xml, setXml] = useState(null);
   return (
     <>
+      <h1>JSON 2 XML</h1>
       <Upload setFile={setFile} file={file} setJson={setJson} setXml={setXml} />
       <div
         style={{
-          width: "500px",
+          width: "800px",
           display: "flex",
           justifyContent: "space-between",
         }}
         className="container"
       >
-        <JsonPreview json={json} style={{ whiteSpace: "pre-line" }} />
-        <XmlPreview xml={xml} />
+        <JsonPreview
+          json={json}
+          style={{ whiteSpace: "pre-line", boxSizing: "border-box" }}
+        />
+        <XmlPreview
+          xml={xml}
+          style={{ whiteSpace: "pre-wrap", boxSizing: "border-box" }}
+        />
       </div>
     </>
   );

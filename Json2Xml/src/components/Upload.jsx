@@ -52,7 +52,11 @@ function Upload({ setFile, file, setJson, setXml }) {
           className="form-control btn-primary btn"
           onChange={handleChange}
         />
-        <input type="submit" className="form-control btn-secondary btn" />
+        <input
+          type="submit"
+          value={"Konvertieren"}
+          className="form-control btn-secondary btn"
+        />
       </div>
     </form>
   );
