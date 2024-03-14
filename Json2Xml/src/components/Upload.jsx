@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-function Upload({ setFile, file, setJson }) {
+function Upload({ setFile, file, setJson, setXml }) {
+  // Assuming setXml is passed as a prop
   function handleChange(event) {
     const file = event.target.files[0];
     setFile(file);
     if (file && file.type === "application/json") {
       const reader = new FileReader();
       reader.onload = (e) => {
-        // Hier wird der Inhalt der Datei gelesen und in den Zustand gesetzt
-        setJson(e.target.result); // Jetzt wird der JSON-Inhalt als String übergeben
+        setJson(e.target.result); // Sets the JSON content in state
       };
       reader.readAsText(file);
     }
@@ -27,6 +27,8 @@ function Upload({ setFile, file, setJson }) {
           body: formData,
         });
         if (response.ok) {
+          const xmlData = await response.text(); // Assuming the response is text/xml
+          setXml(xmlData); // Update the state with the received XML data
           console.log("Upload erfolgreich.");
         } else {
           console.log("Fehler beim Uploaden der Datei.");

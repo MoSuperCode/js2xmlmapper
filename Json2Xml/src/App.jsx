@@ -7,9 +7,10 @@ import XmlPreview from "./components/XmlPreview";
 function App() {
   const [file, setFile] = useState(null);
   const [json, setJson] = useState(null);
+  const [xml, setXml] = useState(null);
   return (
     <>
-      <Upload setFile={setFile} file={file} setJson={setJson} />
+      <Upload setFile={setFile} file={file} setJson={setJson} setXml={setXml} />
       <div
         style={{
           width: "500px",
@@ -19,7 +20,7 @@ function App() {
         className="container"
       >
         <JsonPreview json={json} style={{ whiteSpace: "pre-line" }} />
-        <XmlPreview />
+        <XmlPreview xml={xml} />
       </div>
     </>
   );
