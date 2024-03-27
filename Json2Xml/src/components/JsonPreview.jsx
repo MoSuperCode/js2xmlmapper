@@ -1,17 +1,22 @@
 import React from "react";
+import DraggableWrapper from "./DraggableWrapper"; // Import the DraggableWrapper component
 
-export default function JsonPreview({ json }) {
-  let content;
+function JsonPreview({ json }) {
+  const jsonObject = json ? JSON.parse(json) : {};
 
-  try {
-    content = json ? (
-      <pre>{JSON.stringify(JSON.parse(json), null, 2)}</pre>
-    ) : (
-      "Upload Json Data for preview"
-    );
-  } catch (e) {
-    content = "Fehler beim Parsen des JSON-Inhalts";
-  }
+  const renderJson = (obj) => {
+    return Object.entries(obj).map(([key, value], index) => (
+      <DraggableWrapper key={index} data={`${key}: ${value}`}>
+        <div>
+          {key}: {JSON.stringify(value)}
+        </div>
+      </DraggableWrapper>
+    ));
+  };
 
-  return <>{content}</>;
+  return (
+    <div>{json ? renderJson(jsonObject) : "Upload JSON Data for preview"}</div>
+  );
 }
+
+export default JsonPreview;

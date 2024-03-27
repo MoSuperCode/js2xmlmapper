@@ -25,6 +25,7 @@ function App() {
           style={{ whiteSpace: "pre-line", boxSizing: "border-box" }}
         />
         <XmlPreview
+          setXml={setXml}
           xml={xml}
           style={{ whiteSpace: "pre-wrap", boxSizing: "border-box" }}
         />
